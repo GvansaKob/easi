@@ -13,4 +13,10 @@ export class AideService {
   findAll(): Promise<Aide[]> {
     return this.aideRepository.find();
   }
+
+  async create(aideData: Partial<Aide>): Promise<Aide> {
+  const aide = this.aideRepository.create(aideData);
+  return this.aideRepository.save(aide);
+}
+
 }
