@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
+import path from 'path'
 
 export default defineConfig({
   plugins: [
@@ -16,12 +17,12 @@ export default defineConfig({
         theme_color: '#4f3bf4',
         icons: [
           {
-            src: '/icons/Icone_violette.png',
+            src: '/icons/logo-picto.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/iconsEASI_violet/.png',
+            src: '/icons/logo-easi.png',
             sizes: '512x512',
             type: 'image/png'
           }
@@ -29,4 +30,9 @@ export default defineConfig({
       }
     })
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
 })
