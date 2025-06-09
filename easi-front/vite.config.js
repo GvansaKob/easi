@@ -16,12 +16,12 @@ export default defineConfig({
         theme_color: '#4f3bf4',
         icons: [
           {
-            src: '/icons/EASI_violet.png',
+            src: '/icons/Icone_violette.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/icons/Icone_violette.png',
+            src: '/iconsEASI_violet/.png',
             sizes: '512x512',
             type: 'image/png'
           }
