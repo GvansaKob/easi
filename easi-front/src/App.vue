@@ -1,8 +1,10 @@
 <template>
-  <div class="min-h-screen bg-[#f5f5f5]">
-    <ListeAides />
+  <div class="bg-white min-h-screen">
+    <router-view />
   </div>
 </template>
+
+
 
 <script setup>
 import ListeAides from './components/ListeAides.vue'
