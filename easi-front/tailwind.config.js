@@ -13,10 +13,9 @@ export default {
         blanc: '#FFFFFF',
       },
       fontFamily: {
-        titre: ['"Rl Aqva Black"', 'sans-serif'],
-        textse: ['"URW Form"', 'sans-serif'],
+        titre: ['"rl-aqva"', 'sans-serif'],
+        textse: ['"urw-form"', 'sans-serif'],
       }
-
     },
   },
   plugins: [
