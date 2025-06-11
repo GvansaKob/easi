@@ -1,6 +1,6 @@
 import { Controller, Get, Body, Post } from '@nestjs/common';
 import { AideService } from './aide.service';
-import { Aide } from 'src/entities/aide.entities';
+import { Aide } from 'src/entities/aide.entity';
 
 @Controller('aides')
 export class AideController {

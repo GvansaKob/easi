@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AideController } from './aide.controller';
 import { AideService } from './aide.service';
-import { Aide } from 'src/entities/aide.entities';
+import { Aide } from 'src/entities/aide.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Aide])],
