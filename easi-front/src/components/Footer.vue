@@ -1,29 +1,30 @@
 <template>
     <footer class="bg-violet text-white px-6 py-8 font-textse">
         <div class="flex flex-row gap-12">
-            <!-- Section Aides -->
+
+            <!-- Colonne 1 - Les aides -->
             <div>
                 <h3 class="font-titre text-lg mb-2">Les aides</h3>
                 <ul class="space-y-1 text-base">
-                    <li><a href="#">Financière</a></li>
-                    <li><a href="#">Logement</a></li>
-                    <li><a href="#">Transport</a></li>
-                    <li><a href="#">Santé</a></li>
-                    <li><a href="#">Alimentaire</a></li>
-                    <li><a href="#">“Tout de la vie”</a></li>
+                    <li><router-link to="/aides/financiere">Financière</router-link></li>
+                    <li><router-link to="/aides/logement">Logement</router-link></li>
+                    <li><router-link to="/aides/transport">Transport</router-link></li>
+                    <li><router-link to="/aides/sante">Santé</router-link></li>
+                    <li><router-link to="/aides/alimentaire">Alimentaire</router-link></li>
+                    <li><router-link to="/aides/toutdelavie">“Tout de la vie”</router-link></li>
                 </ul>
             </div>
 
-            <!-- Section Contact -->
+            <!-- Colonne 2 - Contact -->
             <div>
                 <h3 class="font-titre text-lg mb-2">Contact</h3>
                 <ul class="space-y-1 text-base">
-                    <li><a href="#">Mail</a></li>
-                    <li><a href="#">Téléphone</a></li>
+                    <li><a href="mailto:contact@easi.com">Mail</a></li>
+                    <li><a href="tel:+33123456789">Téléphone</a></li>
                 </ul>
             </div>
 
-            <!-- Section Mon compte -->
+            <!-- Colonne 3 - Mon compte -->
             <div>
                 <h3 class="font-titre text-lg mb-2">Mon compte</h3>
                 <ul class="space-y-1 text-base">
