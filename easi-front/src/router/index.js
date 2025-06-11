@@ -1,18 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import PageCategorie from '../views/PageCategorie.vue'
+import AidesFinanciere from '../views/AidesFinanciere.vue'
+import AidesLogement from '../views/AidesLogement.vue'
+import AidesTransport from '../views/AidesTransport.vue'
+import AidesSante from '../views/AidesSante.vue'
+import AidesAlimentaire from '../views/AidesAlimentaire.vue'
+import AidesToutDeLaVie from '../views/AidesToutDeLaVie.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/categorie',
-    name: 'categorie',
-    component: PageCategorie
-  }
+  { path: '/', component: Home },
+  { path: '/aides/financiere', component: AidesFinanciere },
+  { path: '/aides/logement', component: AidesLogement },
+  { path: '/aides/transport', component: AidesTransport },
+  { path: '/aides/sante', component: AidesSante },
+  { path: '/aides/alimentaire', component: AidesAlimentaire },
+  { path: '/aides/toutdelavie', component: AidesToutDeLaVie },
 ]
 
 const router = createRouter({
