@@ -16,13 +16,12 @@
                     <span :class="{ 'rotate-180': aidesOpen }">⌄</span>
                 </div>
                 <ul v-if="aidesOpen" class="ml-2 space-y-1 font-textse text-sm">
-                    <li><a href="#" class="text-noir">Financière</a></li>
-                    <li><a href="#" class="text-noir">Logement</a></li>
-                    <li><a href="#" class="text-noir">Transport</a></li>
-                    <li><a href="#" class="text-noir">Santé</a></li>
-                    <li><a href="#" class="text-noir">Alimentaire</a></li>
-                    <li><a href="#" class="text-noir">“Tout de la vie”</a></li>
-
+                    <li><router-link to="/aides/financiere" class="text-noir">Financière</router-link></li>
+                    <li><router-link to="/aides/logement" class="text-noir">Logement</router-link></li>
+                    <li><router-link to="/aides/transport" class="text-noir">Transport</router-link></li>
+                    <li><router-link to="/aides/sante" class="text-noir">Santé</router-link></li>
+                    <li><router-link to="/aides/alimentaire" class="text-noir">Alimentaire</router-link></li>
+                    <li><router-link to="/aides/toutdelavie" class="text-noir">“Tout de la vie”</router-link></li>
                 </ul>
             </div>
 
