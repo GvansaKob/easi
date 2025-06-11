@@ -1,4 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { ManyToOne } from 'typeorm';
+import { Categorie } from './categorie.entity';
+
 
 @Entity()
 export class Aide {
@@ -20,4 +23,6 @@ export class Aide {
     @Column({ default: true })
     est_active: boolean;
 
+    @ManyToOne(() => Categorie, (categorie) => categorie.aides, { eager: true })
+    categorie: Categorie;
 }
