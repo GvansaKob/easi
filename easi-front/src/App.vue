@@ -1,40 +1,18 @@
 <template>
-  <div class="bg-white min-h-screen">
-    <router-view />
+  <div class="bg-white min-h-screen flex flex-col pb-14"> <!-- on déplace le padding ici -->
+    <Header />
+
+    <main class="flex-grow p-4">
+      <router-view />
+    </main>
+
+    <Footer />
+    <BottomNav />
   </div>
 </template>
 
-
 <script setup>
-import ListeAides from './components/ListeAides.vue'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
+import BottomNav from '@/components/BottomNav.vue'
 </script>
-
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
