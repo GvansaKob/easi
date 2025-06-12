@@ -21,4 +21,9 @@ export class AideController {
     return this.aideService.findByCategorie(nomCategorie);
   }
 
+  @Get(':id')
+  findById(@Param('id') id: number): Promise<Aide | null> {
+    return this.aideService.findById(id);
+  }
+
 }

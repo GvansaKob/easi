@@ -8,7 +8,7 @@ export class AideService {
   constructor(
     @InjectRepository(Aide)
     private aideRepository: Repository<Aide>,
-  ) {}
+  ) { }
 
   findAll(): Promise<Aide[]> {
     return this.aideRepository.find();
@@ -26,4 +26,13 @@ export class AideService {
       .where('categorie.nom = :nom', { nom: nomCategorie })
       .getMany();
   }
+
+  async findById(id: number): Promise<Aide | null> {
+    return this.aideRepository.findOne({
+      where: { id },
+      relations: ['categorie'],
+    });
+  }
+
+
 }
