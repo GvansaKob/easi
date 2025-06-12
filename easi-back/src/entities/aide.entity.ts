@@ -25,4 +25,7 @@ export class Aide {
 
     @ManyToOne(() => Categorie, (categorie) => categorie.aides, { eager: true })
     categorie: Categorie;
+
+    @Column('text', { nullable: true })
+    documents: string;
 }
