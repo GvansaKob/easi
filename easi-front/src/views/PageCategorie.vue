@@ -1,5 +1,5 @@
 <script setup>
-import CarteAide from '../components/CarteAide.vue'
+import CarteAide from '@/components/CarteAide.vue'
 import { ref, onMounted } from 'vue'
 import { API_URL } from '../config'
 
