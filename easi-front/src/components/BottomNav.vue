@@ -15,11 +15,6 @@
         <i class="fas fa-heart icon"></i>
         <span class="label">Favoris</span>
       </button>
-
-      <button @click="goTo('profile')" class="nav-item" :class="isActive('profile')">
-        <i class="fas fa-user icon"></i>
-        <span class="label">Profil</span>
-      </button>
     </div>
   </nav>
 </template>
@@ -34,8 +29,7 @@ function goTo(page) {
   const map = {
     home: '/',
     search: '/search',
-    favorites: '/favorites',
-    profile: '/profile'
+    favorites: '/favorites'
   }
   router.push(map[page])
 }
@@ -44,8 +38,7 @@ function isActive(page) {
   const map = {
     home: '/',
     search: '/search',
-    favorites: '/favorites',
-    profile: '/profile'
+    favorites: '/favorites'
   }
   return route.path === map[page] ? 'active' : ''
 }
@@ -57,7 +50,7 @@ function isActive(page) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 64px; /* largeur fixe pour chaque item */
+  width: 64px;
   height: 85%;
   transition: all 0.3s;
 }
@@ -67,7 +60,7 @@ function isActive(page) {
 }
 
 .label {
-  font-size: 10px; /* plus petit texte */
+  font-size: 10px;
   margin-top: 4px;
 }
 
