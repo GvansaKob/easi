@@ -1,10 +1,10 @@
-import { Controller, Get, Body, Post } from '@nestjs/common';
+import { Controller, Get, Body, Post, Param } from '@nestjs/common';
 import { AideService } from './aide.service';
 import { Aide } from 'src/entities/aide.entity';
 
 @Controller('aides')
 export class AideController {
-  constructor(private readonly aideService: AideService) {}
+  constructor(private readonly aideService: AideService) { }
 
   @Get()
   findAll(): Promise<Aide[]> {
@@ -15,4 +15,10 @@ export class AideController {
   create(@Body() aideData: Partial<Aide>): Promise<Aide> {
     return this.aideService.create(aideData);
   }
+
+  @Get('categorie/:nom')
+  findByCategorie(@Param('nom') nomCategorie: string): Promise<Aide[]> {
+    return this.aideService.findByCategorie(nomCategorie);
+  }
+
 }

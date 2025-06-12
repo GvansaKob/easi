@@ -15,8 +15,15 @@ export class AideService {
   }
 
   async create(aideData: Partial<Aide>): Promise<Aide> {
-  const aide = this.aideRepository.create(aideData);
-  return this.aideRepository.save(aide);
-}
+    const aide = this.aideRepository.create(aideData);
+    return this.aideRepository.save(aide);
+  }
 
+  async findByCategorie(nomCategorie: string): Promise<Aide[]> {
+    return this.aideRepository
+      .createQueryBuilder('aide')
+      .leftJoinAndSelect('aide.categorie', 'categorie')
+      .where('categorie.nom = :nom', { nom: nomCategorie })
+      .getMany();
+  }
 }

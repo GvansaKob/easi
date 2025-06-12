@@ -1,34 +1,36 @@
 <script setup>
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
-// on importe aussi la future carte
-import CartesAides from '@/components/CartesAides.vue'
+import CarteAide from '@/components/CarteAide.vue'
+import { ref, onMounted } from 'vue'
+import { API_URL } from '../config'
 
-// Simuler les données pour l'instant :
-const aides = [
-  { id: 1, nom: "Bourse sur critères sociaux (BCS)", description: "La BCS est une aide financière donnée aux étudiants selon les revenus de leurs parents." },
-  { id: 2, nom: "Aide spécifique annuelle (ASAA)", description: "L'ASAA est une aide pour les étudiants en difficulté qui ne peuvent pas avoir la bourse classique." },
-  { id: 3, nom: "Prime d'équipement", description: "Pour les étudiants qui doivent déménager pour poursuivre leurs études." },
-  // etc.
-]
+const aides = ref([])
+
+onMounted(async () => {
+  const categorie = encodeURIComponent('Financière');
+  const response = await fetch(`${API_URL}/aides/categorie/${categorie}`);
+  if (response.ok) {
+    aides.value = await response.json();
+  }
+})
 </script>
 
 <template>
-  <div class="bg-blanc min-h-screen flex flex-col">
-    <Header />
-    
-    <main class="flex-grow p-4">
-      <div class="bg-violet text-white py-4 text-center font-titre text-xl">
-        Les aides financières
-      </div>
+  <div class="bg-white min-h-screen flex flex-col">
 
-      <div class="p-4">
-        <div class="flex flex-col gap-4">
-          <CartesAides v-for="aide in aides" :key="aide.id" :aide="aide" />
-        </div>
-      </div>
-    </main>
+    <!-- Titre catégorie -->
+    <div class="bg-violet text-white text-center py-6">
+      <h1 class="text-2xl font-titre font-bold">Les aides financières</h1>
+    </div>
 
-    <Footer />
+    <!-- Chemin de navigation -->
+    <div class="px-4 pt-3 pb-5 text-sm text-noir font-textse">
+      Aides &gt; <span class="font-bold">Aides financière</span>
+    </div>
+
+    <!-- Liste des aides -->
+    <div class="px-4 pb-8 grid grid-cols-1 gap-6">
+      <CarteAide v-for="aide in aides" :key="aide.id" :aide="aide" />
+    </div>
+
   </div>
 </template>
