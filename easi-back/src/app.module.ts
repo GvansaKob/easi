@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AideModule } from './aide/aide.module';
 import { Aide } from 'src/entities/aide.entity';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -26,6 +27,8 @@ import { Aide } from 'src/entities/aide.entity';
     }),
 
     AideModule,
+
+    UserModule,
   ],
 })
 export class AppModule { }
