@@ -42,5 +42,9 @@ export class UserService {
         return this.userRepository.findOneBy({ email });
     }
 
+    async updateUserImage(userId: number, imagePath: string): Promise<void> {
+        await this.userRepository.update(userId, { image: imagePath });
+    }
+
 
 }
