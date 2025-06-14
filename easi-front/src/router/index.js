@@ -9,8 +9,7 @@ import AidesToutDeLaVie from '@/views/AidesToutDeLaVie.vue'
 import AideDetail from '@/views/AideDetail.vue'
 import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
-
-// On import le service d'authentification
+import Parametres from '@/views/Parametres.vue'
 import { authService } from '@/services/authService'
 
 // Ici tu pourras bientôt importer tes autres pages
@@ -29,6 +28,11 @@ const routes = [
   { path: '/aide/:id', name: 'AideDetail', component: AideDetail },
   { path: '/login', name: 'Login', component: Login },
   { path: '/register', name: 'Register', component: Register },
+  { path: '/parametres', name: 'Parametres', component: Parametres, meta: { requiresAuth: true } }
+
+  // { path: '/profil', name: 'Profil', component: Profil, meta: { requiresAuth: true } },
+  // { path: '/favorites', name: 'Favorites', component: Favorites, meta: { requiresAuth: true } },
+  // { path: '/search', name: 'Search', component: Search, meta: { requiresAuth: true } }
 ]
 
 const router = createRouter({
