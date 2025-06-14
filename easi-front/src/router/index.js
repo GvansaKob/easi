@@ -11,6 +11,7 @@ import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
 import Parametres from '@/views/Parametres.vue'
 import { authService } from '@/services/authService'
+import Profil from '@/views/Profil.vue'
 
 // Ici tu pourras bientôt importer tes autres pages
 // import Profil from '@/views/Profil.vue'
@@ -28,9 +29,10 @@ const routes = [
   { path: '/aide/:id', name: 'AideDetail', component: AideDetail },
   { path: '/login', name: 'Login', component: Login },
   { path: '/register', name: 'Register', component: Register },
-  { path: '/parametres', name: 'Parametres', component: Parametres, meta: { requiresAuth: true } }
 
-  // { path: '/profil', name: 'Profil', component: Profil, meta: { requiresAuth: true } },
+  { path: '/parametres', name: 'Parametres', component: Parametres, meta: { requiresAuth: true } },
+  { path: '/profil', name: 'Profil', component: Profil, meta: { requiresAuth: true } }
+
   // { path: '/favorites', name: 'Favorites', component: Favorites, meta: { requiresAuth: true } },
   // { path: '/search', name: 'Search', component: Search, meta: { requiresAuth: true } }
 ]
