@@ -23,19 +23,24 @@ export class UserController {
 
     @UseGuards(AuthGuard('jwt'))
     @Post('upload-image')
-    @UseInterceptors(FileInterceptor('file', {
+    @UseInterceptors(FileInterceptor('image', {
         storage: diskStorage({
             destination: './uploads',
             filename: (req, file, callback) => {
-                const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-                callback(null, uniqueSuffix + extname(file.originalname));
+                const filename = `${Date.now()}-${Math.round(Math.random() * 1e9)}.${file.originalname.split('.').pop()}`;
+                callback(null, filename);
             }
         }),
     }))
-    async uploadFile(@UploadedFile() file: Express.Multer.File, @Request() req) {
-        const userId = req.user.id;
+    async uploadProfileImage(
+        @UploadedFile() file: Express.Multer.File,
+        @Request() req,
+    ) {
+        const userId = req.user.id; // 🔧 ici la vraie correction
         const imagePath = file.filename;
+
         await this.userService.updateUserImage(userId, imagePath);
+
         return { imagePath };
     }
 }

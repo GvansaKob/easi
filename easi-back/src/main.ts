@@ -10,6 +10,10 @@ async function bootstrap() {
     prefix: '/uploads/',
   });
 
+  app.enableCors({
+    origin: '*',  // en dev tu autorises tout
+  });
+  
   await app.listen(3000);
 }
 bootstrap();
