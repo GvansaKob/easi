@@ -20,8 +20,9 @@ export class User {
   @Column({ type: 'date' })
   date_de_naissance: Date;
 
-  @Column()
+  @Column({ nullable: true })
   statut: string;
+
 
   @Column({ default: false })
   profil_complet: boolean;

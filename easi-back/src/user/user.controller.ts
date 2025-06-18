@@ -43,4 +43,15 @@ export class UserController {
 
         return { imagePath };
     }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Put('update-profile')
+    async updateProfile(@Request() req, @Body() updateData: Partial<User>) {
+        const userId = req.user.id;
+        return this.userService.updateProfile(userId, updateData);
+    }
+
+
+
+
 }

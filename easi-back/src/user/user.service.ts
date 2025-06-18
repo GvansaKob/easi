@@ -46,5 +46,24 @@ export class UserService {
         await this.userRepository.update(userId, { image: imagePath });
     }
 
+    async updateProfile(userId: number, updateData: Partial<User>): Promise<User> {
+        try {
+            await this.userRepository.update(userId, updateData);
+            const updatedUser = await this.userRepository.findOneBy({ id: userId });
+
+            if (!updatedUser) {
+                throw new Error('Utilisateur non trouvé');
+            }
+
+            return updatedUser;
+        } catch (error) {
+            console.error('❌ Erreur dans updateProfile :', error);
+            throw error;
+        }
+    }
+
+
+
+
 
 }
