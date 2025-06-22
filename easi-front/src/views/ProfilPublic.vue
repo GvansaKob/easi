@@ -7,20 +7,21 @@
         </div>
 
         <!-- Bloc d'aide -->
-        <div class="my-">
+        <div class="my-12">
             <BlocAide />
         </div>
         <!-- Contacts -->
         <div class="grid grid-cols-2 gap-6 w-full justify-items-center text-center text-sm mt-4">
             <div class="flex flex-col items-center gap-2">
                 <i class="text-3xl">📞</i>
-                <p class="text-violet font-large">+33 7 72 82 92 72</p>
+                <a href="tel:+33772829272" class="text-violet font-medium">+33 7 72 82 92 72</a>
             </div>
             <div class="flex flex-col items-center gap-2">
                 <i class="text-3xl">✉️</i>
-                <p class="text-violet font-large">easi@contact.com</p>
+                <a href="mailto:easi@contact.com" class="text-violet font-medium">easi@contact.com</a>
             </div>
         </div>
+
     </div>
 </template>
 
