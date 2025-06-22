@@ -19,9 +19,15 @@
     <!-- Bouton -->
     <BaseButton class="mt-2" @click="login">Me connecter</BaseButton>
 
+    <p class="text-center text-sm mt-6">
+      Vous n'avez pas de compte ?
+      <span @click="router.push('/register')" class="font-bold underline cursor-pointer text-black">
+        Créez un compte
+      </span>
+    </p>
 
     <!-- Mention CGU -->
-    <p class="text-center text-sm text-black mt-10">
+    <p class="text-center text-sm text-black mt-6">
       En créant un compte ou en vous inscrivant, vous acceptez nos
       <span @click="showModal = true" class="underline font-bold cursor-pointer">
         conditions générales
