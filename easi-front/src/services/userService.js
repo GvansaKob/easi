@@ -37,5 +37,24 @@ export const userService = {
     }
 
     return await response.json();
+  },
+
+  async updateProfile(updateData) {
+    const token = authService.getToken();
+
+    const response = await fetch(`${API_URL}/users/update-profile`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(updateData)
+    });
+
+    if (!response.ok) {
+      throw new Error("Impossible de mettre à jour le profil utilisateur");
+    }
+
+    return await response.json();
   }
 }
