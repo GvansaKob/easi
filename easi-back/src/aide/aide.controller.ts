@@ -26,4 +26,10 @@ export class AideController {
     return this.aideService.findById(id);
   }
 
+  @Get('recherche/:terme')
+  rechercherAides(@Param('terme') terme: string) {
+    return this.aideService.rechercherAides(terme);
+  }
+
+
 }

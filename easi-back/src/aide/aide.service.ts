@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Aide } from 'src/entities/aide.entity';
-import { Repository } from 'typeorm';
+import { Repository, ILike } from 'typeorm';
+import * as removeAccents from 'remove-accents';
 
 @Injectable()
 export class AideService {
@@ -34,5 +35,16 @@ export class AideService {
     });
   }
 
+  async rechercherAides(terme: string): Promise<Aide[]> {
+    const cleanedTerme = removeAccents(terme.toLowerCase());
 
+    const aides = await this.aideRepository
+      .createQueryBuilder('aide')
+      .leftJoinAndSelect('aide.categorie', 'categorie')
+      .getMany();
+
+    return aides.filter(a =>
+      removeAccents(a.titre.toLowerCase()).includes(cleanedTerme)
+    );
+  }
 }

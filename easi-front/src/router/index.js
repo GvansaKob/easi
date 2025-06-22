@@ -7,6 +7,14 @@ import Profil from '@/views/Profil.vue'
 import Anim from '@/views/Anim.vue'
 import ProfilPublic from '@/views/ProfilPublic.vue'
 import { authService } from '@/services/authService'
+import AidesFinanciere from '@/views/AidesFinanciere.vue'
+import AidesTransport from '@/views/AidesTransport.vue'
+import AidesAlimentaire from '@/views/AidesAlimentaire.vue'
+import AidesLogement from '@/views/AidesLogement.vue'
+import AidesSante from '@/views/AidesSante.vue'
+import AidesVie from '@/views/AidesToutDeLaVie.vue'
+import Search from '@/views/Search.vue'
+
 
 const routes = [
   { path: '/', name: 'Anim', component: Anim },
@@ -15,7 +23,16 @@ const routes = [
   { path: '/register', name: 'Register', component: Register },
   { path: '/profil', name: 'ProfilPublic', component: ProfilPublic },
   { path: '/parametres', name: 'Parametres', component: Parametres, meta: { requiresAuth: true } },
-  { path: '/mon-profil', name: 'Profil', component: Profil, meta: { requiresAuth: true } }
+  { path: '/mon-profil', name: 'Profil', component: Profil, meta: { requiresAuth: true } },
+  { path: '/aides-financiere', name: 'AidesFinanciere', component: AidesFinanciere },
+  { path: '/aides-transport', name: 'AidesTransport', component: AidesTransport },
+  { path: '/aides-alimentaire', name: 'AidesAlimentaire', component: AidesAlimentaire },
+  { path: '/aides-logement', name: 'AidesLogement', component: AidesLogement },
+  { path: '/aides-sante', name: 'AidesSante', component: AidesSante },
+  { path: '/aides-vie', name: 'AidesVie', component: AidesVie },
+  { path: '/search', name: 'Search', component: Search },
+  { path: '/aide/:id', name: 'AideDetail', component: () => import('@/views/AideDetail.vue')}
+
 ]
 
 const router = createRouter({
@@ -26,12 +43,10 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const isAuthenticated = authService.isLoggedIn()
 
-  // Rediriger /home vers / (animation) si pas encore jouée dans la session
   if (to.path === '/home' && !sessionStorage.getItem('easiSplashPlayed')) {
     return next({ name: 'Anim' })
   }
 
-  // Rediriger / vers /home si déjà vu
   if (to.path === '/' && sessionStorage.getItem('easiSplashPlayed')) {
     return next({ name: 'Home' })
   }
