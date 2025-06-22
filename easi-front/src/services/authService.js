@@ -15,21 +15,26 @@ export const authService = {
     return await response.json();
   },
 
-  async login(credentials) {
-    const response = await fetch(`${API_URL}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials),
-    });
+async login(credentials) {
+  console.log('login - envoi à API :', credentials)
 
-    if (!response.ok) {
-      throw new Error("Email ou mot de passe incorrect");
-    }
+  const response = await fetch(`${API_URL}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(credentials),
+  });
 
-    const data = await response.json();
-    localStorage.setItem('token', data.access_token);
-    return data;
-  },
+  const data = await response.json()
+  console.log('Réponse API:', response.status, data)
+
+  if (!response.ok) {
+    throw new Error(data.message || "Email ou mot de passe incorrect");
+  }
+
+  localStorage.setItem('token', data.access_token);
+  return data;
+},
+
 
   logout() {
     localStorage.removeItem('token');
