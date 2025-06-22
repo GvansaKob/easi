@@ -12,6 +12,8 @@ import Register from '@/views/Register.vue'
 import Parametres from '@/views/Parametres.vue'
 import { authService } from '@/services/authService'
 import Profil from '@/views/Profil.vue'
+import Anim from '@/views/Anim.vue'
+
 
 // Ici tu pourras bientôt importer tes autres pages
 // import Profil from '@/views/Profil.vue'
@@ -19,7 +21,6 @@ import Profil from '@/views/Profil.vue'
 // import Search from '@/views/Search.vue'
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
   { path: '/aides/financiere', component: AidesFinanciere },
   { path: '/aides/logement', component: AidesLogement },
   { path: '/aides/transport', component: AidesTransport },
@@ -29,6 +30,9 @@ const routes = [
   { path: '/aide/:id', name: 'AideDetail', component: AideDetail },
   { path: '/login', name: 'Login', component: Login },
   { path: '/register', name: 'Register', component: Register },
+  { path: '/', name: 'Anim', component: Anim },
+  { path: '/home', name: 'Home', component: Home },
+
 
   { path: '/parametres', name: 'Parametres', component: Parametres, meta: { requiresAuth: true } },
   { path: '/profil', name: 'Profil', component: Profil, meta: { requiresAuth: true } }
