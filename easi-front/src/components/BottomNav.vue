@@ -27,7 +27,7 @@ const route = useRoute()
 
 function goTo(page) {
   const map = {
-    home: '/',
+    home: '/home',
     search: '/search',
     favorites: '/favorites'
   }
@@ -36,12 +36,13 @@ function goTo(page) {
 
 function isActive(page) {
   const map = {
-    home: '/',
+    home: '/home',
     search: '/search',
     favorites: '/favorites'
   }
   return route.path === map[page] ? 'active' : ''
 }
+
 </script>
 
 <style scoped>
