@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -21,6 +21,13 @@ const currentLogo = ref('/icons/logo-easi.png')
 const isRotating = ref(false)
 
 onMounted(() => {
+  if (sessionStorage.getItem('easiSplashPlayed')) {
+    router.push('/home')
+    return
+  }
+
+  sessionStorage.setItem('easiSplashPlayed', 'true')
+
   setTimeout(() => {
     isRotating.value = true
 
@@ -33,6 +40,7 @@ onMounted(() => {
     }, 800)
   }, 500)
 })
+
 </script>
 
 <style scoped>

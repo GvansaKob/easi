@@ -14,13 +14,11 @@
   </div>
 </template>
 
-
 <script setup>
 import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
 import BottomNav from '@/components/BottomNav.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const hideLayout = ['Anim']
+const hideLayout = ['Anim'] // Ne pas afficher Header/Footer sur cette page
 </script>
