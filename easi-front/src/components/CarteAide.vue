@@ -6,7 +6,7 @@
       <h3 class="text-violet font-titre font-bold text-lg mb-2 group-hover:text-white">
         {{ aide.titre }}
       </h3>
-      <p class="text-violet/80 text-sm font-textse leading-snug line-clamp-3 group-hover:text-white">
+      <p class="text-black/80 text-sm font-textse leading-snug line-clamp-3 group-hover:text-white">
         {{ aide.description }}
       </p>
     </div>
