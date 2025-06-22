@@ -1,22 +1,18 @@
 <template>
   <header class="flex items-center justify-between p-4 bg-white shadow-md z-50 relative">
 
-    <!-- Flèche retour uniquement sur page profil -->
-    <button v-if="isProfilePage" @click="goBack">
-      <i class="fas fa-arrow-left text-xl text-noir"></i>
+    <button v-if="showBackButton" @click="goBack">
+      <i class="fas fa-arrow-left text-xl text-violet"></i>
     </button>
 
-    <!-- Logo centré -->
     <img src="/icons/logo-easi.png" alt="Logo EASI" class="h-10 mx-auto" />
 
-    <!-- À droite : soit paramètres soit profil -->
     <button v-if="isProfilePage" @click="goSettings">
       <i class="fas fa-cog text-xl text-violet"></i>
     </button>
     <button v-else @click="goToProfile">
       <i class="fas fa-user text-xl text-violet"></i>
     </button>
-
   </header>
 </template>
 
@@ -25,19 +21,28 @@ import { useRouter, useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { authService } from '@/services/authService'
 
-
 const router = useRouter()
 const route = useRoute()
 
-// C'est ça qui rend réactif au changement de page
-const isProfilePage = computed(() =>
-  ['/profil', '/mon-profil'].includes(route.path)
+const isAuthPage = computed(() => ['/login', '/register'].includes(route.path))
+const isProfilePage = computed(() => ['/profil', '/mon-profil'].includes(route.path))
+const mainPages = ['/', '/home', '/search', '/favorites']
+
+const showBackButton = computed(() =>
+  !mainPages.includes(route.path)
 )
 
-
 function goBack() {
-  router.push('/')
+  if (isAuthPage.value) {
+    router.push('/profil')
+  } else if (route.path === '/profil') {
+    router.push('/home') 
+  } else {
+    router.back()
+  }
 }
+
+
 
 function goSettings() {
   router.push('/parametres')
@@ -50,5 +55,4 @@ function goToProfile() {
     router.push('/profil')
   }
 }
-
 </script>
