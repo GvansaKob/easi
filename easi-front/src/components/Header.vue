@@ -1,6 +1,6 @@
 <template>
   <header class="flex items-center justify-between p-4 bg-white shadow-md z-50 relative">
-    
+
     <!-- Flèche retour uniquement sur page profil -->
     <button v-if="isProfilePage" @click="goBack">
       <i class="fas fa-arrow-left text-xl text-noir"></i>
@@ -23,12 +23,17 @@
 <script setup>
 import { useRouter, useRoute } from 'vue-router'
 import { computed } from 'vue'
+import { authService } from '@/services/authService'
+
 
 const router = useRouter()
 const route = useRoute()
 
 // C'est ça qui rend réactif au changement de page
-const isProfilePage = computed(() => route.path === '/profil')
+const isProfilePage = computed(() =>
+  ['/profil', '/mon-profil'].includes(route.path)
+)
+
 
 function goBack() {
   router.push('/')
@@ -39,6 +44,11 @@ function goSettings() {
 }
 
 function goToProfile() {
-  router.push('/profil')
+  if (authService.isLoggedIn()) {
+    router.push('/mon-profil')
+  } else {
+    router.push('/profil')
+  }
 }
+
 </script>
