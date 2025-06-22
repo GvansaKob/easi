@@ -2,25 +2,38 @@
   <div class="min-h-screen bg-white flex flex-col items-center pt-6">
 
     <!-- Image de profil -->
-    <div
-      class="relative w-24 h-24 rounded-full border-4 border-violet overflow-hidden flex items-center justify-center">
-      <img v-if="user.image" :src="user.image" class="object-cover w-full h-full" />
+    <div class="relative w-24 h-24 rounded-full border-4 border-violet overflow-hidden flex items-center justify-center">
+      <img v-if="user.image" :src="getImageUrl(user.image)" class="object-cover w-full h-full" />
       <i v-else class="fas fa-user text-5xl text-violet flex items-center justify-center h-full"></i>
-
-      <input type="file" accept="image/*" capture="environment" class="absolute inset-0 opacity-0 cursor-pointer"
-        @change="handleImageUpload">
     </div>
 
-    <!-- Infos utilisateur -->
-    <div class="text-center font-textse">
-      <p class="text-xl text-black font-titre font-bold mt-3">{{ user.nom }} {{ user.prenom }} </p>
-      <p class="text-violet italic">{{ user.statut }}</p>
+    <!-- Infos utilisateur / Formulaire -->
+    <div class="text-center font-textse mt-4">
+      <template v-if="!isEditing">
+        <p class="text-xl font-titre font-bold text-black">{{ user.nom }} {{ user.prenom }}</p>
+        <p class="text-violet italic">{{ user.statut }}</p>
+      </template>
+      <template v-else>
+        <input v-model="editableUser.nom" class="border px-2 py-1 mb-1 rounded w-48" placeholder="Nom" />
+        <input v-model="editableUser.prenom" class="border px-2 py-1 mb-1 rounded w-48" placeholder="Prénom" />
+        <input v-model="editableUser.statut" class="border px-2 py-1 mb-1 rounded w-48" placeholder="Statut" />
+      </template>
     </div>
 
-    <!-- Bouton modifier -->
-    <button class="mt-3 py-2 px-4 bg-vert text-violet rounded-2xl">
-      Modifier mon profil
-    </button>
+    <!-- Boutons -->
+    <div class="mt-4">
+      <button
+        v-if="!isEditing"
+        @click="startEdit"
+        class="py-2 px-4 bg-vert text-violet rounded-2xl"
+      >
+        Modifier mon profil
+      </button>
+      <div v-else>
+        <button @click="saveChanges" class="py-2 px-4 bg-violet text-white rounded-2xl mr-2">Enregistrer</button>
+        <button @click="cancelEdit" class="py-2 px-4 bg-gray-300 text-black rounded-2xl">Annuler</button>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -28,62 +41,43 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { userService } from '@/services/userService'
-import { authService } from '@/services/authService'
 import { API_URL } from '@/config'
 
-
-
-const user = ref({
-  nom: '',
-  prenom: '',
-  statut: '',
-  image: ''
-})
+const user = ref({ nom: '', prenom: '', statut: '', image: '' })
+const editableUser = ref({})
+const isEditing = ref(false)
 
 onMounted(async () => {
   try {
-    const response = await userService.getProfile()
-    user.value = response;
-
-    if (user.value.image) {
-      user.value.image = `${API_URL}/uploads/${user.value.image}`;
-    }
-
+    const data = await userService.getProfile()
+    user.value = data
   } catch (e) {
-    console.error("Erreur lors de la récupération du profil:", e)
+    console.error("Erreur lors de la récupération du profil :", e)
   }
 })
 
+function startEdit() {
+  editableUser.value = { ...user.value }
+  isEditing.value = true
+}
 
+function cancelEdit() {
+  isEditing.value = false
+}
 
-async function handleImageUpload(event) {
-  const file = event.target.files[0]
-  if (!file) return;
-
-  const formData = new FormData();
-  formData.append("image", file);
-
-  const token = authService.getToken();
-
+async function saveChanges() {
   try {
-    const response = await fetch(`${API_URL}/users/upload-image`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      },
-      body: formData
-    });
-
-    if (!response.ok) throw new Error("Erreur lors de l'upload");
-
-    const data = await response.json();
-
-    // Mise à jour locale après succès
-    user.value.image = `${API_URL}/uploads/${data.imagePath}`;
-
+    const updated = await userService.updateProfile(editableUser.value)
+    user.value = updated
+    isEditing.value = false
   } catch (e) {
-    console.error("Upload échoué:", e);
+    console.error("Erreur lors de la mise à jour :", e)
+    alert("Erreur lors de la mise à jour.")
   }
 }
 
+function getImageUrl(imagePath) {
+  if (!imagePath) return ''
+  return imagePath.startsWith('http') ? imagePath : `${API_URL}/uploads/${imagePath}`
+}
 </script>
