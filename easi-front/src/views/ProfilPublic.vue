@@ -2,8 +2,8 @@
     <div class="p-6 flex flex-col gap-6 items-center">
         <!-- Boutons -->
         <div class="w-full flex flex-col gap-7 mt-6">
-            <BaseButton @click="router.push('/register')">S’inscrire</BaseButton>
             <BaseButton @click="router.push('/login')">Se connecter</BaseButton>
+            <BaseButton @click="router.push('/register')">S’inscrire</BaseButton>
         </div>
 
         <!-- Bloc d'aide -->
