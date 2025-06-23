@@ -11,7 +11,7 @@
         <span class="label">Recherche</span>
       </button>
 
-      <button @click="goTo('favorites')" class="nav-item" :class="isActive('favorites')">
+      <button @click="handleFavoritesClick" class="nav-item" :class="isActive('favorites')">
         <i class="fas fa-heart icon"></i>
         <span class="label">Favoris</span>
       </button>
@@ -21,6 +21,7 @@
 
 <script setup>
 import { useRouter, useRoute } from 'vue-router'
+import { authService } from '@/services/authService'
 
 const router = useRouter()
 const route = useRoute()
@@ -43,6 +44,13 @@ function isActive(page) {
   return route.path === map[page] ? 'active' : ''
 }
 
+function handleFavoritesClick() {
+  if (!authService.getUserId()) {
+    window.dispatchEvent(new CustomEvent('show-login-modal'))
+  } else {
+    router.push('/favorites')
+  }
+}
 </script>
 
 <style scoped>
@@ -55,16 +63,13 @@ function isActive(page) {
   height: 85%;
   transition: all 0.3s;
 }
-
 .icon {
   font-size: 24px;
 }
-
 .label {
   font-size: 10px;
   margin-top: 4px;
 }
-
 .active {
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
