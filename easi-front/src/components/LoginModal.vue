@@ -5,7 +5,7 @@
     @click.self="closeModal"
   >
     <div class="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full text-center">
-      <p class="text-xl text-gray-700 mb-6">
+      <p class="text-lg text-gray-700 mb-6">
         Pour accéder à vos favoris, veuillez vous connecter à votre compte.
       </p>
 
