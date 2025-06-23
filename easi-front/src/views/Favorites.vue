@@ -1,6 +1,8 @@
 <template>
   <div class="p-6 text-center">
     <h1 class="text-2xl font-bold text-violet font-titre mb-6">Mes Favoris</h1>
+    <p>Retrouve toutes les aides que tu as mises en favoris, lance tes démarches sans attendre !
+ <br><br></p>
 
     <div v-if="!isLoggedIn" class="mt-10">
       <p class="text-lg text-black mb-4">Tu n’as pas encore d’aides.</p>
@@ -14,7 +16,7 @@
     </div>
 
     <div v-else-if="aides.length === 0" class="text-gray-500 italic mt-10">
-      Vous n'avez pas encore de favoris.
+      Tu n'as pas encore d'aides en favoris !
     </div>
 
     <div v-else class="flex flex-col gap-6 mt-6">
