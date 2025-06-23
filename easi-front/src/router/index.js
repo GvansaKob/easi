@@ -14,6 +14,8 @@ import AidesLogement from '@/views/AidesLogement.vue'
 import AidesSante from '@/views/AidesSante.vue'
 import AidesVie from '@/views/AidesToutDeLaVie.vue'
 import Search from '@/views/Search.vue'
+import Favorites from '@/views/Favorites.vue'
+
 
 
 const routes = [
@@ -31,7 +33,9 @@ const routes = [
   { path: '/aides-sante', name: 'AidesSante', component: AidesSante },
   { path: '/aides-vie', name: 'AidesVie', component: AidesVie },
   { path: '/search', name: 'Search', component: Search },
-  { path: '/aide/:id', name: 'AideDetail', component: () => import('@/views/AideDetail.vue')}
+  { path: '/aide/:id', name: 'AideDetail', component: () => import('@/views/AideDetail.vue')},
+  { path: '/favorites', name: 'Favorites', component: Favorites, meta: { requiresAuth: true } }
+
 
 ]
 
