@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
+import { Favori } from './favori.entity';
 
 @Entity()
 export class User {
@@ -23,7 +24,6 @@ export class User {
   @Column({ nullable: true })
   statut: string;
 
-
   @Column({ default: false })
   profil_complet: boolean;
 
@@ -32,5 +32,8 @@ export class User {
 
   @Column({ nullable: true })
   image: string;
+
+  @OneToMany(() => Favori, favori => favori.user)
+  favoris: Favori[];
 
 }

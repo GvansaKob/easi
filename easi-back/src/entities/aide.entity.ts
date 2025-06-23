@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { ManyToOne } from 'typeorm';
 import { Categorie } from './categorie.entity';
+import { Favori } from './favori.entity';
 
 
 @Entity()
@@ -28,4 +29,7 @@ export class Aide {
 
     @Column('text', { nullable: true })
     documents: string;
+
+    @OneToMany(() => Favori, favori => favori.aide)
+    favoris: Favori[];
 }
