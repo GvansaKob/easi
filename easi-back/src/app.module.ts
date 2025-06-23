@@ -5,6 +5,7 @@ import { AideModule } from './aide/aide.module';
 import { Aide } from 'src/entities/aide.entity';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { FavoriModule } from './favori/favori.module';
 
 @Module({
   imports: [
@@ -32,6 +33,8 @@ import { AuthModule } from './auth/auth.module';
     UserModule,
 
     AuthModule,
+
+    FavoriModule,
   ],
 })
 export class AppModule { }
