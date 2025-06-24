@@ -1,9 +1,12 @@
 <template>
-  <div class="p-6">
-    <h1 class="text-2xl font-titre mb-4">Paramètres</h1>
+  <div class="p-6 space-y-8">
 
-    <!-- Ici tu pourras plus tard ajouter d'autres options -->
-    <div class="mt-8">
+    <div class="space-y-4">
+      <router-link to="/cgu" class="block text-blue-600 underline">Conditions Générales d’Utilisation</router-link>
+      <router-link to="/mentions-legales" class="block text-blue-600 underline">Mentions légales</router-link>
+    </div>
+
+    <div class="pt-8">
       <button @click="logout" class="w-full py-3 bg-red-500 text-white rounded-lg font-bold">
         Se déconnecter
       </button>
