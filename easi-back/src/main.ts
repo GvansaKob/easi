@@ -12,13 +12,14 @@ async function bootstrap() {
   });
 
   app.enableCors({
-    origin: '*',
+    origin: true,
   });
+
 
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
-      forbidNonWhitelisted: true, 
+      forbidNonWhitelisted: true,
       transform: true,
     }),
   );
