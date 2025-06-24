@@ -1,15 +1,19 @@
 <script setup>
 import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
-
 </script>
 
 <template>
-  <div class="bg-blanc min-h-screen flex flex-col">
-    <Header />
-    <main class="flex-grow p-4">
-      <!-- contenu -->
+  <div>
+
+    <main class="p-4 flex flex-col items-center gap-4">
+      <p class="text-xl font-bold">Bienvenue sur EASI 👋</p>
+
+      <!-- 🚀 Lien temporaire vers une page d’aide -->
+      <router-link to="/aides-transport" class="py-3 px-6 bg-violet text-white rounded-lg shadow-md font-semibold">
+        Accéder à l’aide Transport
+      </router-link>
+
     </main>
-    <Footer />
+
   </div>
 </template>
