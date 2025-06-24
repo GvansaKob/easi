@@ -22,13 +22,12 @@ export default defineConfig({
         theme_color: '#4f3bf4',
         icons: [
           {
-            // Ces chemins seront générés automatiquement par Vite
-            src: 'icons/logo-picto.png',
+            src: '/icons/logo-picto.png', // Changez en chemin absolu
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '@icons/logo-easi.png', 
+            src: '/icons/logo-easi.png',  // Changez en chemin absolu
             sizes: '512x512',
             type: 'image/png'
           }
