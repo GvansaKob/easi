@@ -45,7 +45,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     rollupOptions: {
-      external: [],
+      external: ['src/components/unused/**'],
       output: {
         manualChunks: undefined
       }
