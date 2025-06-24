@@ -19,7 +19,7 @@ onMounted(async () => {
 
     <!-- Header -->
     <header class="flex justify-between items-center px-4 py-3">
-      <img src="/assets/icons/logo-easi.png" alt="EASI logo" class="h-8" />
+      <img src="/icons/logo-easi.png" alt="EASI logo" class="h-8" />
       <button class="text-2xl">
         ☰
       </button>
