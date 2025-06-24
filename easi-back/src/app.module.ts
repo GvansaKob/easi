@@ -13,15 +13,13 @@ import { FavoriModule } from './favori/favori.module';
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'mysql',
-        host: process.env.DB_HOST || '127.0.0.1',
+        host: process.env.DB_HOST,
         port: parseInt(process.env.DB_PORT || '3306', 10),
-        username: process.env.DB_USERNAME || 'root',
-        password: process.env.DB_PASSWORD || '',
-        database: process.env.DB_DATABASE || 'easi_db',
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DATABASE,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        // synchronize: process.env.NODE_ENV === 'development',
         autoLoadEntities: true,
-        // logging: process.env.NODE_ENV === 'development',
         synchronize: true,
         logging: true,
 
