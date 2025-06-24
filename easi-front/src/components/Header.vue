@@ -5,7 +5,7 @@
       <i class="fas fa-arrow-left text-xl text-violet"></i>
     </button>
 
-    <img src="/icons/logo-easi.png" alt="Logo EASI" class="h-10 mx-auto" />
+    <img src="/public/icons/logo-easi.png" alt="Logo EASI" class="h-10 mx-auto" />
 
     <button v-if="isProfilePage" @click="goSettings">
       <i class="fas fa-cog text-xl text-violet"></i>
