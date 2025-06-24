@@ -5,7 +5,7 @@
       <i class="fas fa-arrow-left text-xl text-violet"></i>
     </button>
 
-    <img :src="logoEasi" alt="Logo EASI" class="h-10 mx-auto" />
+    <img src="/icons/logo-easi.png" class="h-10 mx-auto" />
 
     <button v-if="isProfilePage" @click="goSettings">
       <i class="fas fa-cog text-xl text-violet"></i>
@@ -20,7 +20,7 @@
 import { useRouter, useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { authService } from '@/services/authService'
-import logoEasi from '/icons/logo-easi.png?url'
+import logoUrl from '/icons/logo-easi.png?url'
 
 const router = useRouter()
 const route = useRoute()
