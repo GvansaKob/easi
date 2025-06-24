@@ -1,8 +1,8 @@
-<template>
+<!--<template>
     <footer class="bg-violet text-white px-6 py-8 font-textse">
         <div class="flex flex-row gap-12">
 
-            <!-- Colonne 1 - Les aides -->
+           Colonne 1 - Les aides
             <div>
                 <h3 class="font-titre text-lg mb-2">Les aides</h3>
                 <ul class="space-y-1 text-base">
@@ -15,7 +15,7 @@
                 </ul>
             </div>
 
-            <!-- Colonne 2 - Contact -->
+         Colonne 2 - Contact 
             <div>
                 <h3 class="font-titre text-lg mb-2">Contact</h3>
                 <ul class="space-y-1 text-base">
@@ -24,7 +24,7 @@
                 </ul>
             </div>
 
-            <!-- Colonne 3 - Mon compte -->
+             Colonne 3 - Mon compte 
             <div>
                 <h3 class="font-titre text-lg mb-2">Mon compte</h3>
                 <ul class="space-y-1 text-base">
@@ -35,13 +35,13 @@
         </div>
 
         <div class="mt-8 flex flex-row justify-between items-center flex-wrap">
-            <!-- CGU et Mentions légales-->
+            CGU et Mentions légales
             <div class="space-y-1 text-sm">
                 <a href="#" class="block">CGU</a>
                 <a href="#" class="block">Mentions légales</a>
             </div>
 
-            <!-- Logo et Réseaux -->
+             Logo et Réseaux 
             <div class="mt-4 md:mt-0 flex flex-col items-center ml-auto">
                 <img src="/icons/logo-blanc.png" alt="Logo EASI" class="h-12 mb-2" />
                 <div class="flex space-x-3">
@@ -52,4 +52,4 @@
 
         </div>
     </footer>
-</template>
+</template>-->
