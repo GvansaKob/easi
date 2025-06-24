@@ -17,7 +17,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const currentLogo = ref('/icons/logo-easi.png')
+const currentLogo = ref('/assets/logo-easi.png')
 const isRotating = ref(false)
 
 onMounted(() => {
@@ -32,7 +32,7 @@ onMounted(() => {
     isRotating.value = true
 
     setTimeout(() => {
-      currentLogo.value = '/icons/logo-picto.png'
+      currentLogo.value = '/assets/icons/logo-picto.png'
 
       setTimeout(() => {
         router.push('/home')

@@ -23,12 +23,12 @@ export default defineConfig({
         icons: [
           {
             // Ces chemins seront générés automatiquement par Vite
-            src: '/assets/logo-picto.png',
+            src: '@/assets/icons/logo-picto.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/assets/logo-easi.png', 
+            src: '@/assets/icons/logo-easi.png', 
             sizes: '512x512',
             type: 'image/png'
           }
