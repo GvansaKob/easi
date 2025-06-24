@@ -18,5 +18,5 @@
 </template>
 
 <script setup>
-import blocaide from '/images/blocaide.png?url'
+import blocaide from '@/assets/images/blocaide.png?url'
 </script>
