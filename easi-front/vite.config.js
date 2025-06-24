@@ -10,8 +10,12 @@ export default defineConfig({
       registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        // Exclure les fichiers problématiques du cache
-        globIgnores: ['**/node_modules/**/*']
+        globIgnores: ['**/node_modules/**/*'],
+        // Forcer l'inclusion des icônes du dossier public
+        additionalManifestEntries: [
+          { url: '/icons/logo-picto.png', revision: null },
+          { url: '/icons/logo-easi.png', revision: null }
+        ]
       },
       manifest: {
         name: 'EASI',
@@ -40,12 +44,16 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: './',
+  // IMPORTANT: base: '/' pour Vercel (pas './')
+  base: '/',
+  // S'assurer que le dossier public est bien copié
+  publicDir: 'public',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    // Forcer la copie du dossier public
+    copyPublicDir: true,
     rollupOptions: {
-      external: ['src/components/unused/**'],
       output: {
         manualChunks: undefined
       }

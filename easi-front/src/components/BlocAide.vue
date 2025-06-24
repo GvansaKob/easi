@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center gap-4 bg-green-100 rounded-lg p-4 w-full">
     <div class="flex flex-row gap-4 items-center">
       <img
-        src="/images/blocaide.png"
+        :src="blocaide"
         alt="Vincent"
         class="w-50 h-50 object-cover rounded-md shadow"
       />
@@ -18,4 +18,5 @@
 </template>
 
 <script setup>
+import blocaide from '/images/blocaide.png?url'
 </script>
