@@ -8,6 +8,11 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        // Exclure les fichiers problématiques du cache
+        globIgnores: ['**/node_modules/**/*']
+      },
       manifest: {
         name: 'EASI',
         short_name: 'EASI',
@@ -35,4 +40,16 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  base: './',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      external: [],
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg']
 })
