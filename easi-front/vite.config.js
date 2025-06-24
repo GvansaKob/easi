@@ -11,11 +11,7 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         globIgnores: ['**/node_modules/**/*'],
-        // Forcer l'inclusion des icônes du dossier public
-        additionalManifestEntries: [
-          { url: '/icons/logo-picto.png', revision: null },
-          { url: '/icons/logo-easi.png', revision: null }
-        ]
+        // Supprimé les additionalManifestEntries car les images sont maintenant dans assets
       },
       manifest: {
         name: 'EASI',
@@ -26,12 +22,13 @@ export default defineConfig({
         theme_color: '#4f3bf4',
         icons: [
           {
-            src: '/icons/logo-picto.png',
+            // Ces chemins seront générés automatiquement par Vite
+            src: '/assets/logo-picto.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/icons/logo-easi.png',
+            src: '/assets/logo-easi.png', 
             sizes: '512x512',
             type: 'image/png'
           }
@@ -44,14 +41,11 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  // IMPORTANT: base: '/' pour Vercel (pas './')
   base: '/',
-  // S'assurer que le dossier public est bien copié
   publicDir: 'public',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    // Forcer la copie du dossier public
     copyPublicDir: true,
     rollupOptions: {
       output: {
