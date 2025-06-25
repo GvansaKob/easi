@@ -6,12 +6,14 @@ import { API_URL } from '../config'
 const aides = ref([])
 
 onMounted(async () => {
+  console.log("API_URL =", API_URL) // 👈 ajoute cette ligne
   const categorie = encodeURIComponent('Financière');
   const response = await fetch(`${API_URL}/aides/categorie/${categorie}`);
   if (response.ok) {
     aides.value = await response.json();
   }
 })
+
 </script>
 
 <template>
