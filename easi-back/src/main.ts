@@ -12,7 +12,8 @@ async function bootstrap() {
   });
 
   app.enableCors({
-    origin: true,
+    origin: ['https://easi-app.vercel.app'],
+    credentials: true,
   });
 
 
