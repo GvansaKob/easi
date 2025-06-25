@@ -30,7 +30,6 @@ logs/
 *.sublime-workspace
 *.sublime-project
 
-Icon?
 ehthumbs.db
 Thumbs.db
 
