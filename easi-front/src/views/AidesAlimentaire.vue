@@ -18,11 +18,11 @@ onMounted(async () => {
   <div class="bg-white min-h-screen flex flex-col">
 
     <div class="bg-violet text-white text-center py-6">
-      <h1 class="text-2xl font-titre font-bold">Les aides "Tout de la vie"</h1>
+      <h1 class="text-2xl font-titre font-bold">Les aides Alimentaires</h1>
     </div>
 
     <div class="px-4 pt-3 pb-5 text-sm text-noir font-textse">
-      Aides &gt; <span class="font-bold">Aides "Tout de la vie"</span>
+      Aides &gt; <span class="font-bold">Aides Alimentaires</span>
     </div>
 
     <div class="px-4 pb-8 grid grid-cols-1 gap-6">
