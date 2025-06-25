@@ -19,14 +19,14 @@ import { FavoriModule } from './favori/favori.module';
       database: process.env.DB_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false,
+      ssl: {
+        rejectUnauthorized: true,
+      },
       extra: {
         ssl: {
           rejectUnauthorized: true,
         },
       },
-
-      logging: true,
-      autoLoadEntities: true,
     }),
 
     AideModule,
