@@ -1,2 +1,1 @@
-export const API_URL ="https://easi-s3vf.onrender.com";
-
+export const API_URL = import.meta.env.VITE_API_URL;
