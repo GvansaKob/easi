@@ -6,7 +6,7 @@ import { API_URL } from '../config'
 const aides = ref([])
 
 onMounted(async () => {
-  const categorie = encodeURIComponent('Tout de la vie');
+  const categorie = encodeURIComponent('Alimentaire');
   const response = await fetch(`${API_URL}/aides/categorie/${categorie}`);
   if (response.ok) {
     aides.value = await response.json();
