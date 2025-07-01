@@ -10,7 +10,7 @@
         <h2 class="text-2xl font-titre font-bold text-violet mb-1">Besoin d’aides ?</h2>
         <p>Vincent peut vous guider dans vos démarches !</p>
         <p class="mt-2 text-xs text-black/60">
-          L’appel coûte 2 €, peu importe le temps passé, mais le contact par mail reste 100 % gratuit.
+          L’appel coûte 2€, peu importe le temps passé, mais le contact par mail reste 100% gratuit.
         </p>
       </div>
     </div>

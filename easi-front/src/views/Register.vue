@@ -88,11 +88,6 @@ function togglePassword() {
   showPassword.value = !showPassword.value
 }
 
-function isFutureDate(dateStr) {
-  const today = new Date()
-  const date = new Date(dateStr)
-  return date > today
-}
 
 async function register() {
   if (!prenom.value || !nom.value || !email.value || !password.value || !confirmPassword.value || !dateNaissance.value) {
@@ -136,7 +131,6 @@ async function register() {
   catch (err) {
     alert(err.message || 'Erreur lors de l’inscription')
   }
-  ƒ
 }
 
 function capitalizeWords(str) {

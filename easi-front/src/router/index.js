@@ -16,6 +16,7 @@ import AidesVie from '@/views/AidesToutDeLaVie.vue'
 import Search from '@/views/Search.vue'
 import Favorites from '@/views/Favorites.vue'
 import Contact from '@/views/Contact.vue'
+import AideDetail from '@/views/AideDetail.vue'
 
 
 
@@ -34,10 +35,9 @@ const routes = [
   { path: '/aides-sante', name: 'AidesSante', component: AidesSante },
   { path: '/aides-vie', name: 'AidesVie', component: AidesVie },
   { path: '/search', name: 'Search', component: Search },
-  { path: '/aide/:id', name: 'AideDetail', component: () => import('@/views/AideDetail.vue') },
+  { path: '/aide/:id', name: 'AideDetail', component: AideDetail },
   { path: '/favorites', name: 'Favorites', component: Favorites, meta: { requiresAuth: true } },
-  { path: '/contact', name: 'Contact', component: () => import('@/views/Contact.vue'),
-  }
+  { path: '/contact', name: 'Contact', component: Contact }
 ]
 
 const router = createRouter({
