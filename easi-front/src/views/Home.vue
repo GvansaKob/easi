@@ -7,8 +7,8 @@ function goToRegister() {
   router.push('/register')
 }
 
-function goToLogin() {
-  router.push('/login')
+function goToSearch() {
+  router.push('/search')
 }
 
 const categories = [
@@ -41,10 +41,10 @@ function goToCategorie(route) {
 
           <!-- Boutons verts -->
           <div class="flex flex-col gap-3 mt-4 max-w-xs">
-            <button @click="goToRegister" class="bg-vert text-violet font-bold py-2 px-4 rounded-xl">
+            <button @click="goToSearch" class="bg-vert text-violet font-bold py-2 px-4 rounded-xl">
               Voir nos offres
             </button>
-            <button @click="goToLogin" class="bg-vert text-violet font-bold py-2 px-4 rounded-xl">
+            <button @click="goToRegister" class="bg-vert text-violet font-bold py-2 px-4 rounded-xl">
               Commencer mes démarches
             </button>
           </div>
