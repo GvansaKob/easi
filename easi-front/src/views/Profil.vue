@@ -4,19 +4,11 @@
     <!-- Image de profil (cliquable si édition) -->
     <div
       class="relative w-24 h-24 rounded-full border-4 border-violet overflow-hidden flex items-center justify-center cursor-pointer"
-      @click="handleImageClick"
-    >
+      @click="handleImageClick">
       <img v-if="user.image" :src="getImageUrl(user.image)" class="object-cover w-full h-full" />
       <i v-else class="fas fa-user text-5xl text-violet flex items-center justify-center h-full"></i>
       <!-- Input invisible pour sélectionner une image -->
-      <input
-        ref="fileInput"
-        type="file"
-        accept="image/*"
-        capture="environment"
-        class="hidden"
-        @change="handleImageChange"
-      />
+      <input ref="fileInput" type="file" accept="image/*" class="hidden" @change="handleImageChange" />
     </div>
 
     <!-- Infos utilisateur / Formulaire -->
@@ -34,11 +26,7 @@
 
     <!-- Boutons -->
     <div class="mt-4">
-      <button
-        v-if="!isEditing"
-        @click="startEdit"
-        class="py-2 px-4 bg-vert text-violet rounded-2xl"
-      >
+      <button v-if="!isEditing" @click="startEdit" class="py-2 px-4 bg-vert text-violet rounded-2xl">
         Modifier mon profil
       </button>
       <div v-else>
@@ -47,6 +35,20 @@
       </div>
     </div>
 
+    <!-- Section Mes Favoris -->
+    <div class="w-full px-6 mt-10">
+      <h2 class="text-xl font-bold text-black font-titre mb-4">Mes favoris</h2>
+
+      <div v-if="aides.length === 0" class="text-gray-500 italic font-textse">
+        Vous n'avez pas de favoris.
+      </div>
+
+      <div v-else class="flex flex-col gap-6">
+        <CarteAide v-for="aide in aides" :key="aide.id" :aide="aide.aide" />
+      </div>
+    </div>
+
+
   </div>
 </template>
 
@@ -54,19 +56,31 @@
 import { ref, onMounted } from 'vue'
 import { userService } from '@/services/userService'
 import { API_URL } from '@/config'
+import CarteAide from '@/components/CarteAide.vue'
+import { authService } from '@/services/authService'
 
 const user = ref({ nom: '', prenom: '', statut: '', image: '' })
 const editableUser = ref({})
 const isEditing = ref(false)
 const fileInput = ref(null)
+const aides = ref([])
 
 onMounted(async () => {
   try {
     const data = await userService.getProfile()
     user.value = data
+
+    // Récupérer les favoris
+    const userId = authService.getUserId()
+    const res = await fetch(`${API_URL}/favoris/${userId}`)
+    if (res.ok) {
+      aides.value = await res.json()
+    }
   } catch (e) {
     console.error("Erreur lors de la récupération du profil :", e)
   }
+
+
 })
 
 function startEdit() {
