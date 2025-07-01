@@ -115,7 +115,7 @@ function goToCategorie(route) {
       <!-- Texte d'intro -->
       <section class="text-center px-6 py-10 font-textse text-noir">
         <p class="text-lg">
-          Bienvenue sur EASI, le site qui t’aide à trouver et obtenir les aides financières faites pour toi.
+          Bienvenue sur EASI 👋 <br> Le site qui t’aide à trouver et obtenir les aides financières faites pour toi.
         </p>
         <p class="mt-4 text-base">
           Fini la galère des démarches, on t’explique tout simplement !
