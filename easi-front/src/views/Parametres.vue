@@ -2,9 +2,9 @@
   <div class="p-6 space-y-8">
 
     <div class="space-y-4">
-      <router-link to="/contact" class="block">Contact</router-link>
-      <router-link to="/cgu" class="block">Conditions Générales d’Utilisation</router-link>
-      <router-link to="/mentions-legales" class="block">Mentions légales</router-link>
+      <router-link to="/contact" class="block font-bold">Contact</router-link>
+      <router-link to="/cgu" class="block font-bold">Conditions Générales d’Utilisation</router-link>
+      <router-link to="/mentions-legales" class="block font-bold">Mentions légales</router-link>
     </div>
 
     <div class="pt-8">
