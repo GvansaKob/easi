@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { join, parse } from 'path';
+import { join } from 'path';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
@@ -11,11 +11,15 @@ async function bootstrap() {
     prefix: '/uploads/',
   });
 
+  const allowedOrigins =
+    process.env.NODE_ENV === 'production'
+      ? ['https://easi-app.vercel.app']
+      : ['http://localhost:5173'];
+
   app.enableCors({
-    origin: ['https://easi-app.vercel.app'],
+    origin: allowedOrigins,
     credentials: true,
   });
-
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -25,6 +29,6 @@ async function bootstrap() {
     }),
   );
 
-await app.listen(process.env.PORT || 3000)
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
