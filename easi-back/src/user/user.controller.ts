@@ -49,7 +49,8 @@ export class UserController {
 
         await this.userService.updateUserImage(userId, imagePath);
 
-        return { imagePath };
+        return { image: imagePath };
+
     }
 
     @UseGuards(AuthGuard('jwt'))

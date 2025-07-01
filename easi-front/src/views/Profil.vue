@@ -1,10 +1,22 @@
 <template>
   <div class="min-h-screen bg-white flex flex-col items-center pt-6">
 
-    <!-- Image de profil -->
-    <div class="relative w-24 h-24 rounded-full border-4 border-violet overflow-hidden flex items-center justify-center">
+    <!-- Image de profil (cliquable si édition) -->
+    <div
+      class="relative w-24 h-24 rounded-full border-4 border-violet overflow-hidden flex items-center justify-center cursor-pointer"
+      @click="handleImageClick"
+    >
       <img v-if="user.image" :src="getImageUrl(user.image)" class="object-cover w-full h-full" />
       <i v-else class="fas fa-user text-5xl text-violet flex items-center justify-center h-full"></i>
+      <!-- Input invisible pour sélectionner une image -->
+      <input
+        ref="fileInput"
+        type="file"
+        accept="image/*"
+        capture="environment"
+        class="hidden"
+        @change="handleImageChange"
+      />
     </div>
 
     <!-- Infos utilisateur / Formulaire -->
@@ -46,6 +58,7 @@ import { API_URL } from '@/config'
 const user = ref({ nom: '', prenom: '', statut: '', image: '' })
 const editableUser = ref({})
 const isEditing = ref(false)
+const fileInput = ref(null)
 
 onMounted(async () => {
   try {
@@ -63,6 +76,29 @@ function startEdit() {
 
 function cancelEdit() {
   isEditing.value = false
+}
+
+// Gestion du clic sur la photo de profil
+function handleImageClick() {
+  if (!isEditing.value) return
+  fileInput.value?.click()
+}
+
+// Gestion du changement d'image (upload)
+async function handleImageChange(event) {
+  const file = event.target.files[0]
+  if (!file) return
+
+  try {
+    const result = await userService.uploadImage(file)
+    if (result.image) {
+      user.value.image = result.image
+      editableUser.value.image = result.image
+    }
+  } catch (e) {
+    console.error("Erreur lors de l'upload de l'image", e)
+    alert("Erreur lors de l'envoi de l'image.")
+  }
 }
 
 async function saveChanges() {
