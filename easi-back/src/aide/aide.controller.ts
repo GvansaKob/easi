@@ -1,10 +1,12 @@
 import { Controller, Get, Body, Post, Param } from '@nestjs/common';
 import { AideService } from './aide.service';
 import { Aide } from 'src/entities/aide.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Aides')
 @Controller('aides')
 export class AideController {
-  constructor(private readonly aideService: AideService) { }
+  constructor(private readonly aideService: AideService) {}
 
   @Get()
   findAll(): Promise<Aide[]> {
@@ -30,6 +32,4 @@ export class AideController {
   rechercherAides(@Param('terme') terme: string) {
     return this.aideService.rechercherAides(terme);
   }
-
-
 }
