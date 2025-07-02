@@ -19,7 +19,7 @@ easi/
 ### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/ton-utilisateur/easi.git
+git clone https://github.com/GvansaKob/easi.git
 cd easi
 cd easi-front
 npm install
